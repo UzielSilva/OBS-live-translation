@@ -144,25 +144,25 @@
 
             ///////////////////////////////////////////////////////////
             // Events ---------------------------------
-            recognition.onsoundstart = function () {
+            recognition.onsoundstart = function (event) {
                 // document.getElementById('status').innerHTML = "Listening";
             };
-            recognition.onspeechstart = function () {
+            recognition.onspeechstart = function (event) {
                 // document.getElementById('status').innerHTML = "Listening";
             };
-            recognition.onnomatch = function () {
+            recognition.onnomatch = function (event) {
                 // document.getElementById('status').innerHTML = "Please try again";
             };
-            recognition.onerror = function () {
+            recognition.onerror = function (event) {
                 // document.getElementById('status').innerHTML = "Error";
                 vr_function();
             };
-            recognition.onsoundend = function () {
+            recognition.onsoundend = function (event) {
                 // document.getElementById('status').innerHTML = "Stopping";
                 recognition.stop()
                 vr_function();
             };
-            recognition.onspeechend = function () {
+            recognition.onspeechend = function (event) {
                 // document.getElementById('status').innerHTML = "Stopping";
                 recognition.stop()
                 vr_function();
