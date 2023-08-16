@@ -109,7 +109,6 @@
         }
 
         function vr_function() {
-            console.log ("captioning started");
             window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
 
             // Settings for voice recognition ----------------------
@@ -132,6 +131,7 @@
             ///////////////////////////////////////////////////////////
             // Events ---------------------------------
             recognition.onstart = function() {
+                console.log ("captioning started");
                 recognizing = true;
             };
 
@@ -142,7 +142,7 @@
             recognition.onend = function() {
                 console.log ("captioning stopped");
                 recognizing = false;
-                vr_function();
+                recognition.start();
             };
 
             //////////////////////////////////////////////////////////
@@ -172,7 +172,7 @@
                 var results = event.results;
                 for (var i = event.resultIndex; i < results.length; i++) {
                     if (results[i].isFinal) {
-                        // console.log(results);
+                        console.log(results);
                         recog_text = results[i][0].transcript;
 
                         // document.getElementById('speech_text-imb').innerHTML = recog_text;
