@@ -123,6 +123,7 @@
         }
 
         function vr_function() {
+            console.log ("captioning started");
             window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
 
             // Settings for voice recognition ----------------------
@@ -155,6 +156,7 @@
             recognition.onend = function() {
                 console.log ("captioning stopped");
                 recognizing = false;
+                vr_function();
             };
 
             //////////////////////////////////////////////////////////
