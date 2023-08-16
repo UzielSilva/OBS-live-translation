@@ -144,28 +144,17 @@
 
             ///////////////////////////////////////////////////////////
             // Events ---------------------------------
-            recognition.onsoundstart = function (event) {
-                // document.getElementById('status').innerHTML = "Listening";
+            recognition.onstart = function() {
+                recognizing = true;
             };
-            recognition.onspeechstart = function (event) {
-                // document.getElementById('status').innerHTML = "Listening";
+
+            recognition.onerror = function(event) {
+                console.log ("there was a captioning error", event);
             };
-            recognition.onnomatch = function (event) {
-                // document.getElementById('status').innerHTML = "Please try again";
-            };
-            recognition.onerror = function (event) {
-                // document.getElementById('status').innerHTML = "Error";
-                vr_function();
-            };
-            recognition.onsoundend = function (event) {
-                // document.getElementById('status').innerHTML = "Stopping";
-                recognition.stop()
-                vr_function();
-            };
-            recognition.onspeechend = function (event) {
-                // document.getElementById('status').innerHTML = "Stopping";
-                recognition.stop()
-                vr_function();
+
+            recognition.onend = function() {
+                console.log ("captioning stopped");
+                recognizing = false;
             };
 
             //////////////////////////////////////////////////////////
@@ -215,14 +204,12 @@
                                     document.getElementById('trans_text-bg').innerHTML = request.responseText;
                                     document.getElementById('trans_text-fg').innerHTML = request.responseText;
                                 }
-                                vr_function();
                             }
                             request.send(null);
                         } else {
                             document.getElementById('speech_text-imb').innerHTML = recog_text;
                             document.getElementById('speech_text-bg').innerHTML = recog_text;
                             document.getElementById('speech_text-fg').innerHTML = recog_text;
-                            vr_function();
                         }
                     }
                     else {
